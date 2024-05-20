@@ -1,7 +1,7 @@
 ﻿using Grannys_yarns_API.Model;
 using Grannys_yarns_API.Repository;
 
-namespace Grannys_yarns_API.Service
+namespace Grannys_yarns_API.Services
 {
     public class Service: iService
     {
@@ -14,7 +14,6 @@ namespace Grannys_yarns_API.Service
 
         public void AddYarn(Yarn yarn)
         {
-            yarn.id = repository.GetAllYarns().Max(p => p.id) + 1;
             repository.AddYarn(yarn);
         }
 
@@ -28,14 +27,40 @@ namespace Grannys_yarns_API.Service
             repository.DeleteYarn(id);
         }
 
+        public Yarn GetYarn(int id)
+        {
+            return repository.GetYarn(id);
+        }
+
         public List<Yarn> GetAllYarns()
         {
             return repository.GetAllYarns();
         }
 
-        public Yarn GetYarn(int id)
+        public void AddDistributor(Distributor distributor)
         {
-            return repository.GetYarn(id);
+            repository.AddDistributor(distributor);
         }
+
+        public void UpdateDistributor(Distributor updatedDistributor)
+        {
+            repository.UpdateDistributor(updatedDistributor);
+        }
+
+        public void DeleteDistributor(int id)
+        {
+            repository.DeleteDistributor(id);
+        }
+
+        public Distributor GetDistributor(int id)
+        {
+            return repository.GetDistributor(id);
+        }
+
+        public List<Distributor> GetAllDistributors()
+        {
+            return repository.GetAllDistributors();
+        }
+
     }
 }

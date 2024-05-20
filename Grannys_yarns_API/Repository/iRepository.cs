@@ -9,5 +9,11 @@ namespace Grannys_yarns_API.Repository
         public void DeleteYarn(int id);
         public Yarn GetYarn(int id);
         public List<Yarn> GetAllYarns();
+        public void AddDistributor(Distributor distributor);
+        public void UpdateDistributor(Distributor updatedDistributor);
+        public void DeleteDistributor(int id);
+        public Distributor GetDistributor(int id);
+        public List<Distributor> GetAllDistributors();
+
     }
 }
