@@ -20,3 +20,9 @@ public class DistributorDataTransferObject
     public string username { get; set; }
     public string password { get; set; }
 }
+
+public class DistributorLoginDataTransferObject
+{
+    public string username { get; set; }
+    public string password { get; set; }
+}

@@ -191,26 +191,26 @@ namespace Grannys_yarns_API.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] string username, string password)
+        public IActionResult Login([FromBody] DistributorLoginDataTransferObject credentials)
         {
-            if (username == null || password == null)
+            if (credentials.username == null || credentials.password == null)
             {
                 return BadRequest("Invalid username or password");
             }
 
-            if (service.GetDistributorByUsername(username) == null)
+            if (service.GetDistributorByUsername(credentials.username) == null)
             {
                 return NotFound("Invalid username!");
             }
 
-            if (service.GetDistributorByUsername(username).password != password)
+            if (service.GetDistributorByUsername(credentials.username).password != credentials.password)
             {
                 return NotFound("Invalid password!");
             }
 
             try
             {
-                var session = service.GenerateSessions(service.GetDistributorByUsername(username).id);
+                var session = service.GenerateSessions(service.GetDistributorByUsername(credentials.username).id);
                 return Ok(session);
             }
             catch (Exception e)
