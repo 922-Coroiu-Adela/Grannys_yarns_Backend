@@ -22,7 +22,7 @@ namespace Grannys_yarns_API.Repository
 
         public void UpdateYarn(Yarn updatedYarn)
         {
-            Yarn existingYarn = context.Yarns.FirstOrDefault(x => x.id == updatedYarn.id);
+            Yarn existingYarn = context.Yarns.FirstOrDefault(x => x.yid == updatedYarn.yid);
             if (existingYarn == null)
             {
                 throw new Exception("Yarn not found");
@@ -49,7 +49,7 @@ namespace Grannys_yarns_API.Repository
 
         public Yarn GetYarn(int id)
         {
-            return context.Yarns.FirstOrDefault(x => x.id == id);
+            return context.Yarns.FirstOrDefault(x => x.yid == id);
         }
 
         public List<Yarn> GetAllYarns()

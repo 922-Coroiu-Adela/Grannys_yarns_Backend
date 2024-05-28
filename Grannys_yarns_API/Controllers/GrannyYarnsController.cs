@@ -76,7 +76,7 @@ namespace Grannys_yarns_API.Controllers
             }
             var updatedYarn = new Yarn
             {
-                id = updatedYarnDTO.yid,
+                yid = updatedYarnDTO.yid,
                 did = updatedYarnDTO.did,
                 name = updatedYarnDTO.name,
                 color = updatedYarnDTO.color,

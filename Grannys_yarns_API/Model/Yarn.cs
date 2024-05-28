@@ -4,7 +4,7 @@ namespace Grannys_yarns_API.Model;
 
 public class Yarn
 {
-    public int id { get; set; } = 0;
+    public int yid { get; set; } = 0;
     public int did { get; set; }
     [JsonIgnore]
     public Distributor distributor { get; set; }

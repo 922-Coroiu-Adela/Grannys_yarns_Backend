@@ -83,7 +83,7 @@ namespace Grannys_yarns_Tests
             var service = new Service(repository);
             var yarn = new Yarn
             {
-                id = 7,
+                yid = 7,
                 name = "Alize Bella Yarn",
                 color = "blue",
                 price = 16,

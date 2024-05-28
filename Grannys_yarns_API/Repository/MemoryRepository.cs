@@ -9,7 +9,7 @@ namespace Grannys_yarns_API.Repository
         static private List<Yarn> yarns = [
             #region mockedYarns
             new Yarn {
-                id = 0,
+                yid = 0,
                 did = 0,
                 name = "Alize Velluto Yarn",
                 color = "red",
@@ -19,7 +19,7 @@ namespace Grannys_yarns_API.Repository
             },
             new Yarn
             {
-                id = 1,
+                yid = 1,
                 did = 1,
                 name = "Alize Bella Yarn",
                 color = "blue",
@@ -29,7 +29,7 @@ namespace Grannys_yarns_API.Repository
             },
             new Yarn
             {
-                id = 2,
+                yid = 2,
                 did = 2,
                 name = "Alize Klasik Yarn",
                 color = "green",
@@ -38,7 +38,7 @@ namespace Grannys_yarns_API.Repository
                 size = 4
             },
             new Yarn {
-                id = 3,
+                yid = 3,
                 did = 0,
                 name = "Alize Diva Yarn",
                 color = "yellow",
@@ -48,7 +48,7 @@ namespace Grannys_yarns_API.Repository
             },
             new Yarn
             {
-                id = 4,
+                yid = 4,
                 did = 0,
                 name = "Alize Midi Yarn",
                 color = "orange",
@@ -58,7 +58,7 @@ namespace Grannys_yarns_API.Repository
             },
             new Yarn
             {
-                id = 5,
+                yid = 5,
                 did = 1,
                 name = "Alize Cotton Gold Yarn",
                 color = "purple",
@@ -68,7 +68,7 @@ namespace Grannys_yarns_API.Repository
             },
             new Yarn
             {
-                id = 6,
+                yid = 6,
                 did = 2,
                 name = "Alize Forever Yarn",
                 color = "black",
@@ -108,13 +108,13 @@ namespace Grannys_yarns_API.Repository
         }
         public void AddYarn(Yarn yarn)
         {
-            yarn.id = GetAllYarns().Max(x => x.id) + 1;
+            yarn.yid = GetAllYarns().Max(x => x.yid) + 1;
             yarns.Add(yarn);
         }
 
         public void DeleteYarn(int id)
         {
-            Yarn yarnToDelete = yarns.FirstOrDefault(y => y.id == id);
+            Yarn yarnToDelete = yarns.FirstOrDefault(y => y.yid == id);
 
             if (yarnToDelete == null)
             {
@@ -131,7 +131,7 @@ namespace Grannys_yarns_API.Repository
         public void UpdateYarn(Yarn updatedYarn)
         {
             
-            Yarn existingYarn = yarns.FirstOrDefault(x => x.id == updatedYarn.id);
+            Yarn existingYarn = yarns.FirstOrDefault(x => x.yid == updatedYarn.yid);
             if (existingYarn == null) 
             {
                 throw new Exception("Yarn not found");
@@ -145,7 +145,7 @@ namespace Grannys_yarns_API.Repository
 
         public Yarn GetYarn(int id)
         {
-            Yarn yarn =  yarns.FirstOrDefault(x => x.id == id);
+            Yarn yarn =  yarns.FirstOrDefault(x => x.yid == id);
             if (yarn == null)
             {
                 throw new Exception("Yarn not found");
