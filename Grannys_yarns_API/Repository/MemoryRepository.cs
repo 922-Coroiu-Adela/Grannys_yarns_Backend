@@ -217,5 +217,10 @@ namespace Grannys_yarns_API.Repository
             throw new NotImplementedException();
         }
 
+        public void RemoveSession(int distributorId)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
