@@ -28,7 +28,7 @@ namespace Grannys_yarns_API.Repository
                 throw new Exception("Yarn not found");
             }
 
-            if (existingYarn.distributorId != updatedYarn.distributorId)
+            if (existingYarn.did != updatedYarn.did)
             {
                 throw new Exception("You are not allowed to change the distributor of the yarn");
             }
@@ -65,7 +65,7 @@ namespace Grannys_yarns_API.Repository
 
         public void UpdateDistributor(Distributor updatedDistributor)
         {
-            Distributor existingDistributor = context.Distributors.FirstOrDefault(x => x.id == updatedDistributor.id);
+            Distributor existingDistributor = context.Distributors.FirstOrDefault(x => x.did == updatedDistributor.did);
             if (existingDistributor == null)
             {
                 throw new Exception("Distributor not found");
@@ -87,7 +87,7 @@ namespace Grannys_yarns_API.Repository
 
         public Distributor GetDistributor(int id)
         {
-            return context.Distributors.FirstOrDefault(x => x.id == id);
+            return context.Distributors.FirstOrDefault(x => x.did == id);
         }
 
         public List<Distributor> GetAllDistributors() 
@@ -97,28 +97,28 @@ namespace Grannys_yarns_API.Repository
 
         public void RemoveSession(int distributorId)
         {
-            var sessionToRemove = context.Sessions.FirstOrDefault(x => x.did == distributorId);
+            var sessionToRemove = context.Session.FirstOrDefault(x => x.did == distributorId);
             if (sessionToRemove == null)
             {
                 throw new Exception("Session not found");
             }
-            context.Sessions.Remove(sessionToRemove);
+            context.Session.Remove(sessionToRemove);
             context.SaveChanges();
         }
 
         public void AddSession(Session session)
         {
-            if (context.Sessions.Any(s => s.did == session.did))
+            if (context.Session.Any(s => s.did == session.did))
             {
                 RemoveSession(session.did);
             }
-            context.Sessions.Add(session);
+            context.Session.Add(session);
             context.SaveChanges();
         }
 
         public bool ValidToken(string token)
         {
-            return context.Sessions.Any(s => s.token == token);
+            return context.Session.Any(s => s.token == token);
         }
 
         public Distributor GetDistributorByUsername(string username)

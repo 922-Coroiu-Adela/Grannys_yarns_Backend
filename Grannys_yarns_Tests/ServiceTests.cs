@@ -111,7 +111,7 @@ namespace Grannys_yarns_Tests
             var service = new Service(repository);
             var distributor = new Distributor
             {
-                id = 5,
+                did = 5,
                 name = "Distributor5",
                 address = "Address5",
                 phone = "Phone5"
@@ -128,7 +128,7 @@ namespace Grannys_yarns_Tests
             var service = new Service(repository);
             var distributor = new Distributor
             {
-                id = 0,
+                did = 0,
                 name = "Distributor000",
                 address = "Address000",
                 phone = "0712-000000"

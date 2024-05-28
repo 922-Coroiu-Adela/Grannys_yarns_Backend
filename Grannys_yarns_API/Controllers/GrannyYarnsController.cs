@@ -47,7 +47,7 @@ namespace Grannys_yarns_API.Controllers
             }
             var yarn = new Yarn
             {
-                distributorId = yarnDTO.distributorId,
+                did = yarnDTO.did,
                 name = yarnDTO.name,
                 color = yarnDTO.color,
                 price = yarnDTO.price,
@@ -76,8 +76,8 @@ namespace Grannys_yarns_API.Controllers
             }
             var updatedYarn = new Yarn
             {
-                id = updatedYarnDTO.id,
-                distributorId = updatedYarnDTO.distributorId,
+                id = updatedYarnDTO.yid,
+                did = updatedYarnDTO.did,
                 name = updatedYarnDTO.name,
                 color = updatedYarnDTO.color,
                 price = updatedYarnDTO.price,
@@ -158,7 +158,7 @@ namespace Grannys_yarns_API.Controllers
             }
             var distributor = new Distributor
             {
-                id = updatedDistributor.id,
+                did = updatedDistributor.did,
                 name = updatedDistributor.name,
                 address = updatedDistributor.address,
                 phone = updatedDistributor.phone,
@@ -210,7 +210,7 @@ namespace Grannys_yarns_API.Controllers
 
             try
             {
-                var session = service.GenerateSessions(service.GetDistributorByUsername(credentials.username).id);
+                var session = service.GenerateSessions(service.GetDistributorByUsername(credentials.username).did);
                 return Ok(session);
             }
             catch (Exception e)
