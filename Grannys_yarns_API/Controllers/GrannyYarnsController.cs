@@ -144,6 +144,8 @@ namespace Grannys_yarns_API.Controllers
                 name = distributor.name,
                 address = distributor.address,
                 phone = distributor.phone,
+                username = distributor.username,
+                password = distributor.password
             };
             service.AddDistributor(newDistributor);
             return Ok("Distributor added successfully");
