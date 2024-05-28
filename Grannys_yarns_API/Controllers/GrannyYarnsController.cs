@@ -54,8 +54,17 @@ namespace Grannys_yarns_API.Controllers
                 quantity = yarnDTO.quantity,
                 size = yarnDTO.size,
             };
-            service.AddYarn(yarn);
-            return Ok("Yarn added successfully");
+            try
+            {
+                service.AddYarn(yarn);
+                return Ok("Yarn added successfully");
+            }
+            catch(Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest("Yarn not added");
+            }
+            
         }
 
         [HttpPut("yarns/update", Name = "UpdateYarn")]

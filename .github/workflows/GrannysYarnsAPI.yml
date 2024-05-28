@@ -1,14 +1,14 @@
-name: Build and deploy .NET Core application to Web App grannysyarns
+name: Build and deploy .NET Core application to Web App GrannysYarnsAPI
 on:
   push:
     branches:
     - master
 env:
-  AZURE_WEBAPP_NAME: grannysyarns
-  AZURE_WEBAPP_PACKAGE_PATH: .\publish
+  AZURE_WEBAPP_NAME: GrannysYarnsAPI
+  AZURE_WEBAPP_PACKAGE_PATH: Grannys_yarns_API\publish
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
-  WORKING_DIRECTORY: .
+  WORKING_DIRECTORY: Grannys_yarns_API
 jobs:
   build:
     runs-on: windows-latest
@@ -44,5 +44,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.grannysyarns_575F }}
+        publish-profile: ${{ secrets.GrannysYarnsAPI_5BE5 }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
