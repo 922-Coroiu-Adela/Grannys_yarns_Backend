@@ -7,6 +7,7 @@ namespace Grannys_yarns_API.Data
     {
         public DbSet<Yarn> Yarns { get; set; }
         public DbSet<Distributor> Distributors { get; set; }
+        public DbSet<Session> Sessions { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options): base(options)
         {
@@ -19,6 +20,11 @@ namespace Grannys_yarns_API.Data
                 .HasMany(d => d.yarns)
                 .WithOne(y => y.distributor)
                 .HasForeignKey(y => y.distributorId);
+
+            modelBuilder.Entity<Session>()
+                .HasKey(s => s.token);
+
+            base.OnModelCreating(modelBuilder);
         }
 
         

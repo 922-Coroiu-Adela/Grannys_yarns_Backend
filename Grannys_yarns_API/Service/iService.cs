@@ -14,5 +14,10 @@ namespace Grannys_yarns_API.Services
         public void DeleteDistributor(int id);
         public Distributor GetDistributor(int id);
         public List<Distributor> GetAllDistributors();
+
+        public Session GenerateSessions(int distributorId);
+        public bool ValidateToken(string token);
+        public void RemoveSession(int distributorId);
+        public Distributor GetDistributorByUsername(string username);
     }
 }

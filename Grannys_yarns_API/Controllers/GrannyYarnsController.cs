@@ -190,5 +190,52 @@ namespace Grannys_yarns_API.Controllers
             }
         }
 
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] string username, string password)
+        {
+            if (username == null || password == null)
+            {
+                return BadRequest("Invalid username or password");
+            }
+
+            if (service.GetDistributorByUsername(username) == null)
+            {
+                return NotFound("Invalid username!");
+            }
+
+            if (service.GetDistributorByUsername(username).password != password)
+            {
+                return NotFound("Invalid password!");
+            }
+
+            try
+            {
+                var session = service.GenerateSessions(service.GetDistributorByUsername(username).id);
+                return Ok(session);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost("logout")]
+        public IActionResult Logout([FromBody] Session session)
+        {
+            if (session == null)
+            {
+                return BadRequest("Invalid session in request body");
+            }
+            try
+            {
+                service.RemoveSession(session.did);
+                return Ok("Session removed");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }

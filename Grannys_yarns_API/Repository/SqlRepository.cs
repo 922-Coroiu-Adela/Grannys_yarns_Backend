@@ -95,9 +95,41 @@ namespace Grannys_yarns_API.Repository
             return context.Distributors.ToList();
         }
 
-        
+        public void RemoveSession(int distributorId)
+        {
+            var sessionToRemove = context.Sessions.FirstOrDefault(x => x.did == distributorId);
+            if (sessionToRemove == null)
+            {
+                throw new Exception("Session not found");
+            }
+            context.Sessions.Remove(sessionToRemove);
+            context.SaveChanges();
+        }
 
-        
+        public void AddSession(Session session)
+        {
+            if (context.Sessions.Any(s => s.did == session.did))
+            {
+                RemoveSession(session.did);
+            }
+            context.Sessions.Add(session);
+            context.SaveChanges();
+        }
+
+        public bool ValidToken(string token)
+        {
+            return context.Sessions.Any(s => s.token == token);
+        }
+
+        public Distributor GetDistributorByUsername(string username)
+        {
+            var distributor = context.Distributors.FirstOrDefault(x => x.username == username);
+            if (distributor == null)
+            {
+                throw new Exception("Distributor not found");
+            }
+            return distributor;
+        }
 
     }
 }

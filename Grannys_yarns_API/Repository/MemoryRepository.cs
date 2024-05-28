@@ -197,6 +197,25 @@ namespace Grannys_yarns_API.Repository
             existingDistributor.phone = updatedDistributor.phone;
         }
 
+        public Distributor GetDistributorByUsername(string username)
+        {
+            Distributor distributor = distributors.FirstOrDefault(x => x.name == username);
+            if (distributor == null)
+            {
+                throw new Exception("Distributor not found");
+            }
+            return distributor;
+        }
+
+        public bool ValidToken(string token)
+        {
+            return true;
+        }
+
+        public void AddSession(Session session)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

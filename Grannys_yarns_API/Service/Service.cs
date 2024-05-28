@@ -1,5 +1,7 @@
-﻿using Grannys_yarns_API.Model;
+﻿using Bogus;
+using Grannys_yarns_API.Model;
 using Grannys_yarns_API.Repository;
+using System.Security.Cryptography;
 
 namespace Grannys_yarns_API.Services
 {
@@ -60,6 +62,32 @@ namespace Grannys_yarns_API.Services
         public List<Distributor> GetAllDistributors()
         {
             return repository.GetAllDistributors();
+        }
+
+        public Session GenerateSessions(int distributorId)
+        {
+            Random random = new Random();
+            string token = random.Next(10000000, 99999999).ToString();
+            Session session = new Session();
+            session.token = token;
+            session.did = distributorId;
+            repository.AddSession(session);
+            return session;
+        }
+
+        public bool ValidateToken(string token)
+        {
+            return repository.ValidToken(token);
+        }
+
+        public void RemoveSession(int distributorId)
+        {
+            repository.RemoveSession(distributorId);
+        }
+
+        public Distributor GetDistributorByUsername(string username)
+        {
+            return repository.GetDistributorByUsername(username);
         }
 
     }
