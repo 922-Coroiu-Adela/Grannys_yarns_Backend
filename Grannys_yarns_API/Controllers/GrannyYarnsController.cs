@@ -222,16 +222,16 @@ namespace Grannys_yarns_API.Controllers
         }
 
         [HttpPost("logout")]
-        public IActionResult Logout([FromBody] Session session)
+        public IActionResult Logout([FromBody] int distributorId)
         {
-            if (session == null)
+            if (distributorId == null)
             {
-                return BadRequest("Invalid session in request body");
+                return BadRequest("Invalid distributor id");
             }
             try
             {
-                service.RemoveSession(session.did);
-                return Ok("Session removed");
+                service.RemoveSession(distributorId);
+                return Ok("Logged out successfully");
             }
             catch (Exception e)
             {
