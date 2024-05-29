@@ -25,7 +25,7 @@ namespace Grannys_yarns_API.Data
                 .HasKey(d => d.did);
 
             modelBuilder.Entity<Session>()
-                .HasKey(s => s.did);
+                .HasKey(s => s.token);
 
             modelBuilder.Entity<Yarn>()
                 .HasKey(s => s.yid);

@@ -45,6 +45,8 @@ namespace Grannys_yarns_API
                 
             app.UseAuthorization();
 
+            app.UseMiddleware<TokenValidationMiddleware>();
+
             app.MapControllers();
 
             app.Run();
