@@ -221,8 +221,8 @@ namespace Grannys_yarns_API.Controllers
             }
         }
 
-        [HttpPost("logout")]
-        public IActionResult Logout([FromBody] int distributorId)
+        [HttpPost("logout/{distributorId}")]
+        public IActionResult Logout(int distributorId)
         {
             if (distributorId == null)
             {
